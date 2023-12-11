@@ -92,6 +92,13 @@ onMounted(async () => {
 					CVV；请务必在处理该文件副本时小心谨慎，不要发送给除你之外的任何人。
 				</p>
 				<br />
+				<h1 class="text-2xl">你也可以贡献你的高清卡面</h1>
+				<p class="text-sm">
+					透过 Github 进行 Pull Request 或 Issue
+					来提交你的卡面文件，你可以在网站右上角找到 Github
+					仓库的入口。
+				</p>
+				<br />
 			</div>
 		</div>
 	</header>
@@ -162,7 +169,7 @@ onMounted(async () => {
 							data-te-parent="#accordion"
 						>
 							<div class="py-4 px-4">
-								<div class="grid grid-cols-4 gap-4">
+								<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 									<!-- Each <div> is a single column.
 									Place some content inside to see the effect. -->
 									<template v-for="(card, index) in cards">
@@ -193,10 +200,16 @@ onMounted(async () => {
 														<div
 															class="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full items-center justify-center overflow-hidden bg-[hsla(0,0%,0%,0.6)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"
 														>
-															<span
-																class="text-center text-white"
-																>查看原图</span
+															<div
+																class="h-full flex flex-col justify-between items-center"
 															>
+																<span></span>
+																<span
+																	>透过 Github
+																	打开原文件</span
+																>
+																<span></span>
+															</div>
 														</div>
 													</a>
 												</div>
@@ -267,7 +280,7 @@ onMounted(async () => {
 
 	<!-- Footer -->
 	<footer
-		class="fixed bg-gray-900 \text-neutral-200 bottom-0 w-full lg:py-2"
+		class="bg-gray-900 \text-neutral-200 bottom-0 w-full lg:py-2"
 		id="footer"
 	>
 		<div class="grid grid-cols-2">
