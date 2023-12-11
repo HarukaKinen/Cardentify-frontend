@@ -99,6 +99,16 @@ onMounted(async () => {
 					仓库的入口。
 				</p>
 				<br />
+				<h1 class="text-2xl">另请参见</h1>
+				<p class="text-sm">
+					1. Chao's <a
+						href="https://dynalist.io/d/ldKY6rbMR3LPnWz4fTvf_HCh"
+						target="_blank"
+						class="text-blue-500"
+						>Apple Pay High Res (Or Paypal Low Res) Card
+						Backgrounds</a
+					> Collection
+				</p>
 			</div>
 		</div>
 	</header>
