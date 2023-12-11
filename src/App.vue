@@ -169,7 +169,9 @@ onMounted(async () => {
 							data-te-parent="#accordion"
 						>
 							<div class="py-4 px-4">
-								<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+								<div
+									class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+								>
 									<!-- Each <div> is a single column.
 									Place some content inside to see the effect. -->
 									<template v-for="(card, index) in cards">
@@ -215,17 +217,100 @@ onMounted(async () => {
 												</div>
 												<div class="p-6">
 													<h5
-														class="mb-2 text-xl font-medium leading-tight text-gray-200"
+														class="mb-4 text-xl font-medium leading-tight text-gray-200"
 													>
 														{{ card.description }}
 													</h5>
-													<p
-														class="mb-4 text-base text-gray-200"
+													<div
+														class="border-b border-gray-200"
+													></div>
+													<div
+														class="border border-gray-400 rounded-lg relative p-2 my-4"
 													>
-														{{ card.issuer.name }}
-													</p>
-													<div>
-														<span v-if="card.bin">
+														<span
+															class="block text-xs w-full text-right"
+														>
+															发行
+														</span>
+														<p
+															class="text-base text-gray-200"
+														>
+															<span
+																v-if="
+																	card.issuer
+																		.native_name ===
+																	card.issuer
+																		.english_name
+																"
+															>
+																{{
+																	card.issuer
+																		.english_name
+																}}
+															</span>
+															<span v-else>
+																{{
+																	card.issuer
+																		.native_name
+																}}
+																-
+																{{
+																	card.issuer
+																		.english_name
+																}}
+															</span>
+														</p>
+													</div>
+													<div
+														v-if="card.manager"
+														class="border border-gray-400 rounded-lg relative p-2 my-4"
+													>
+														<span
+															class="block text-xs w-full text-right"
+														>
+															代管理
+														</span>
+														<p
+															class="text-base text-gray-200"
+														>
+															<span>
+																<span
+																	v-if="
+																		card
+																			.manager
+																			.native_name ===
+																		card
+																			.manager
+																			.english_name
+																	"
+																>
+																	{{
+																		card
+																			.manager
+																			.english_name
+																	}}
+																</span>
+																<span v-else>
+																	{{
+																		card
+																			.manager
+																			.native_name
+																	}}
+																	-
+																	{{
+																		card
+																			.manager
+																			.english_name
+																	}}
+																</span>
+															</span>
+														</p>
+													</div>
+													<div class="mt-4">
+														<span
+															v-if="card.bin"
+															class="px-1"
+														>
 															<span
 																v-for="(
 																	bin, index
@@ -240,30 +325,46 @@ onMounted(async () => {
 															v-if="
 																card.card.type
 															"
-															class="inline-block whitespace-nowrap rounded-full bg-secondary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-secondary-800"
+															class="px-1"
 														>
-															{{ card.card.type }}
+															<span
+																class="inline-block whitespace-nowrap rounded-full bg-secondary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-secondary-800"
+															>
+																{{
+																	card.card
+																		.type
+																}}
+															</span>
 														</span>
 														<span
 															v-if="
 																card.card.level
 															"
-															class="inline-block whitespace-nowrap rounded-full bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-success-700"
+															class="px-1"
 														>
-															{{
-																card.card.level
-															}}
-														</span>
+															<span
+																class="inline-block whitespace-nowrap rounded-full bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-success-700"
+															>
+																{{
+																	card.card
+																		.level
+																}}
+															</span></span
+														>
 														<span
 															v-if="
 																card.card.brand
 															"
-															class="inline-block whitespace-nowrap rounded-full bg-danger-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-danger-700"
+															class="px-1"
+															><span
+																class="inline-block whitespace-nowrap rounded-full bg-danger-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-danger-700"
+															>
+																{{
+																	card.card
+																		.brand
+																}}
+															</span></span
 														>
-															{{
-																card.card.brand
-															}}
-														</span>
 													</div>
 												</div>
 											</div>
