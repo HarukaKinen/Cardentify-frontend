@@ -196,7 +196,7 @@ onMounted(async () => {
 												class="block rounded-lg bg-gradient-to-r from-gray-500 to-gray-600"
 											>
 												<div
-													class="relative overflow-hidden bg-cover bg-no-repeat"
+													class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat"
 													data-te-ripple-init
 													data-te-ripple-color="light"
 												>
