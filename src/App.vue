@@ -278,7 +278,7 @@ onMounted(async () => {
 														<span
 															class="block text-xs w-full text-right"
 														>
-															代管理
+															进行资金结算
 														</span>
 														<p
 															class="text-base text-gray-200"
