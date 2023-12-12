@@ -1,7 +1,14 @@
 <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
 <script setup>
 import { ref, onMounted, nextTick, watchEffect } from "vue";
-import { Sticky, Ripple, Collapse, Dropdown, initTE } from "tw-elements";
+import {
+	Sticky,
+	Ripple,
+	Collapse,
+	Dropdown,
+	Tooltip,
+	initTE,
+} from "tw-elements";
 
 import { fetchBankData, fetchCardsData, countCountry } from "./plugins/data.js";
 import { getName } from "country-list";
@@ -42,7 +49,7 @@ onMounted(async () => {
 	countryList.value = await countCountry(bank.value, cards.value);
 
 	await nextTick();
-	initTE({ Sticky, Ripple, Collapse, Dropdown });
+	initTE({ Sticky, Ripple, Collapse, Dropdown, Tooltip });
 });
 </script>
 
@@ -264,88 +271,109 @@ onMounted(async () => {
 													<div
 														class="border-b border-gray-200"
 													></div>
-													<div
-														class="border border-gray-400 rounded-lg relative p-2 my-4"
+													<a
+														:href="`${card.issuer.url}`"
+														target="_blank"
+														data-te-toggle="tooltip"
+														title="进入发卡行官网"
 													>
-														<span
-															class="block text-xs w-full text-right"
-														>
-															发行
-														</span>
-														<p
-															class="text-base text-gray-200"
+														<div
+															class="border border-gray-400 rounded-lg relative p-2 my-4"
 														>
 															<span
-																v-if="
-																	card.issuer
-																		.native_name ===
-																	card.issuer
-																		.english_name
-																"
+																class="block text-xs w-full text-right"
 															>
-																{{
-																	card.issuer
-																		.english_name
-																}}
+																发行
 															</span>
-															<span v-else>
-																{{
-																	card.issuer
-																		.native_name
-																}}
-																-
-																{{
-																	card.issuer
-																		.english_name
-																}}
-															</span>
-														</p>
-													</div>
-													<div
-														v-if="card.manager"
-														class="border border-gray-400 rounded-lg relative p-2 my-4"
-													>
-														<span
-															class="block text-xs w-full text-right"
-														>
-															进行资金结算
-														</span>
-														<p
-															class="text-base text-gray-200"
-														>
-															<span>
+															<p
+																class="text-base text-gray-200"
+															>
 																<span
 																	v-if="
 																		card
-																			.manager
+																			.issuer
 																			.native_name ===
 																		card
-																			.manager
+																			.issuer
 																			.english_name
 																	"
 																>
 																	{{
 																		card
-																			.manager
+																			.issuer
 																			.english_name
 																	}}
 																</span>
 																<span v-else>
 																	{{
 																		card
-																			.manager
+																			.issuer
 																			.native_name
 																	}}
 																	-
 																	{{
 																		card
-																			.manager
+																			.issuer
 																			.english_name
 																	}}
 																</span>
+															</p>
+														</div></a
+													>
+													<a
+														v-if="card.manager"
+														:href="`${card.manager.url}`"
+														target="_blank"
+														data-te-toggle="tooltip"
+														title="进入结算行官网"
+													>
+														<div
+															class="border border-gray-400 rounded-lg relative p-2 my-4"
+														>
+															<span
+																class="block text-xs w-full text-right"
+															>
+																进行资金结算
 															</span>
-														</p>
-													</div>
+															<p
+																class="text-base text-gray-200"
+															>
+																<span>
+																	<span
+																		v-if="
+																			card
+																				.manager
+																				.native_name ===
+																			card
+																				.manager
+																				.english_name
+																		"
+																	>
+																		{{
+																			card
+																				.manager
+																				.english_name
+																		}}
+																	</span>
+																	<span
+																		v-else
+																	>
+																		{{
+																			card
+																				.manager
+																				.native_name
+																		}}
+																		-
+																		{{
+																			card
+																				.manager
+																				.english_name
+																		}}
+																	</span>
+																</span>
+															</p>
+														</div></a
+													>
 													<div class="mt-4">
 														<span
 															v-if="card.bin"
