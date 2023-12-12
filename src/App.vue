@@ -1,6 +1,6 @@
 <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
 <script setup>
-import { ref, onMounted, nextTick } from "vue";
+import { ref, onMounted, nextTick, watchEffect } from "vue";
 import { Sticky, Ripple, Collapse, Dropdown, initTE } from "tw-elements";
 
 import { fetchBankData, fetchCardsData, countCountry } from "./plugins/data.js";
@@ -10,6 +10,31 @@ const bank = ref([]);
 const cards = ref([]);
 const countryList = ref([]);
 const getCountryName = (code) => getName(code);
+const activeIndex = ref(0); // Track the currently active accordion item
+
+// When an accordion item is toggled, watch for changes to `activeIndex`
+watchEffect(() => {
+	const index = activeIndex.value;
+	if (index !== null) {
+		// Use Vue's nextTick to wait for the DOM to update
+		nextTick(() => {
+			const element = document.getElementById(`flush-collapse-${index}`);
+			if (element) {
+				const offset = 100; // Adjust this offset as needed
+				const elementPosition =
+					element.getBoundingClientRect().top +
+					window.scrollY -
+					offset;
+				window.scrollTo({ top: elementPosition, behavior: "smooth" });
+			}
+		});
+	}
+});
+
+// Call this function when an accordion heading is clicked
+const toggleAccordion = (index) => {
+	activeIndex.value = index === activeIndex.value ? null : index;
+};
 
 onMounted(async () => {
 	bank.value = await fetchBankData();
@@ -101,13 +126,15 @@ onMounted(async () => {
 				<br />
 				<h1 class="text-2xl">另请参见</h1>
 				<p class="text-sm">
-					1. Chao's <a
+					1. Chao's
+					<a
 						href="https://dynalist.io/d/ldKY6rbMR3LPnWz4fTvf_HCh"
 						target="_blank"
 						class="text-blue-500"
 						>Apple Pay High Res (Or Paypal Low Res) Card
 						Backgrounds</a
-					> Collection
+					>
+					Collection
 				</p>
 			</div>
 		</div>
@@ -140,10 +167,13 @@ onMounted(async () => {
 									index !== 0 ? true : null
 								"
 								:data-te-target="`#flush-collapse-${index}`"
-								aria-expanded="false"
 								:aria-controls="`flush-collapse-${index}`"
+								:aria-expanded="
+									activeIndex === index ? 'true' : 'false'
+								"
 								data-te-ripple-init
 								data-te-ripple-color="light"
+								@click="toggleAccordion(index)"
 							>
 								<span
 									class="bg-gray-500 text-white rounded-full py-auto px-auto px-2 text-base font-medium"
@@ -170,8 +200,8 @@ onMounted(async () => {
 						<div
 							:id="`flush-collapse-${index}`"
 							:class="{
-								'!visible': index === 0,
-								'!visible hidden': index !== 0,
+								'!visible': activeIndex === index,
+								'!visible hidden': activeIndex !== index,
 							}"
 							data-te-collapse-item
 							:data-te-collapse-show="index === 0 ? true : null"
