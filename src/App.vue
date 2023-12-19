@@ -2,6 +2,7 @@
 <script setup>
 import { ref, onMounted, nextTick, watchEffect } from "vue";
 import {
+	Tab,
 	Sticky,
 	Ripple,
 	Collapse,
@@ -49,7 +50,7 @@ onMounted(async () => {
 	countryList.value = await countCountry(bank.value, cards.value);
 
 	await nextTick();
-	initTE({ Sticky, Ripple, Collapse, Dropdown, Tooltip });
+	initTE({ Tab, Sticky, Ripple, Collapse, Dropdown, Tooltip });
 });
 </script>
 
@@ -95,54 +96,118 @@ onMounted(async () => {
 	</nav>
 
 	<header>
-		<div class="bg-gray-900 px-4 py-6 sm:px-6 lg:px-8">
-			<div class="container mx-auto font-bold tracking-tight text-white">
-				<p class="text-sm">
-					本站提供嘅高清卡面，仅供学习交流使用，严禁用于商业用途。
-				</p>
-				<br />
-				<h1 class="text-2xl">获取 Apple Pay 高清卡面</h1>
-				<br />
-				<h2 class="text-xl">如果你拥有配备 Touch ID 的 Mac</h2>
-				<p class="text-sm">
-					请参见美卡论坛的<a
-						href="https://www.uscardforum.com/t/topic/29408"
-						target="_blank"
-						class="text-blue-500"
-						>这篇帖子</a
-					>，你也可以在帖子中找到更多由论坛坛友提供的高清卡面。
-				</p>
-				<br />
-				<h2 class="text-xl">
-					如果你拥有配备 Touch ID 或 Face ID 的 iPhone 或 iPad
-				</h2>
-				<p class="text-sm">
-					尝试获取 root 权限（比如越狱），进入
-					<code>/var/mobile/Library/Passes/Cards</code>
-					目录找到卡面。<br />请注意，其中
-					<code>pass.json</code> 存放着关于其卡片的所有隐私信息，包括
-					CVV；请务必在处理该文件副本时小心谨慎，不要发送给除你之外的任何人。
-				</p>
-				<br />
-				<h1 class="text-2xl">你也可以贡献你的高清卡面</h1>
-				<p class="text-sm">
-					透过 Github 进行 Pull Request 或 Issue
-					来提交你的卡面文件，你可以在网站右上角找到 Github
-					仓库的入口。
-				</p>
-				<br />
-				<h1 class="text-2xl">另请参见</h1>
-				<p class="text-sm">
-					1. Chao's
-					<a
-						href="https://dynalist.io/d/ldKY6rbMR3LPnWz4fTvf_HCh"
-						target="_blank"
-						class="text-blue-500"
-						>Apple Pay High Res (Or Paypal Low Res) Card
-						Backgrounds</a
+		<div class="bg-gray-900 py-4 px-4 sm:px-6 lg:px-8">
+			<!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
+			<!--Tabs navigation-->
+			<div class="container mx-auto">
+				<ul
+					class="flex list-none flex-row flex-wrap border-b-0 pl-0"
+					role="tablist"
+					data-te-nav-ref
+				>
+					<li role="presentation">
+						<a
+							href="#tabs-home"
+							class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+							data-te-toggle="pill"
+							data-te-target="#tabs-home"
+							data-te-nav-active
+							role="tab"
+							aria-controls="tabs-home"
+							aria-selected="true"
+							>须知</a
+						>
+					</li>
+					<li role="presentation">
+						<a
+							href="#tabs-profile"
+							class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+							data-te-toggle="pill"
+							data-te-target="#tabs-profile"
+							role="tab"
+							aria-controls="tabs-profile"
+							aria-selected="false"
+							>透过 Apple Pay 获取卡面</a
+						>
+					</li>
+				</ul>
+
+				<!--Tabs content-->
+				<div class="font-bold tracking-tight text-white">
+					<div
+						class="hidden opacity-100 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+						id="tabs-home"
+						role="tabpanel"
+						aria-labelledby="tabs-home-tab"
+						data-te-tab-active
 					>
-					Collection
-				</p>
+						<p class="text-sm">
+							本站提供嘅高清卡面，仅供学习交流使用，严禁用于商业用途。
+						</p>
+						<br />
+						<h1 class="text-2xl">你也可以贡献你的高清卡面</h1>
+						<p class="text-m">
+							透过 Github 进行 Pull Request 或 Issue
+							来提交你的卡面文件，你可以在网站右上角找到 Github
+							仓库的入口。
+						</p>
+						<br />
+						<p class="text-xl">本站仅收录来自以下服务提供的卡面</p>
+						<p class="text-sm">（优先度从高到低排序）</p>
+						<p class="text-m">
+							Tier 0 - Apple Pay <br />
+							Tier 1 - Paypal，Google Pay <br />
+							Tier 2 - Samsung Pay，Mi Pay，HUAWEI Pay <br />
+							Tier 3 - 云闪付 <br />
+						</p>
+						<br />
+						<h1 class="text-l">另请参见</h1>
+						<p class="text-sm">
+							1. Chao's
+							<a
+								href="https://dynalist.io/d/ldKY6rbMR3LPnWz4fTvf_HCh"
+								target="_blank"
+								class="text-blue-500"
+								>Apple Pay High Res (Or Paypal Low Res) Card
+								Backgrounds</a
+							>
+							Collection
+						</p>
+					</div>
+					<div
+						class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+						id="tabs-profile"
+						role="tabpanel"
+						aria-labelledby="tabs-profile-tab"
+					>
+						<div>
+							<h2 class="text-xl">
+								如果你拥有配备 Touch ID 的 Mac
+							</h2>
+							<p class="text-sm">
+								请参见美卡论坛的<a
+									href="https://www.uscardforum.com/t/topic/29408"
+									target="_blank"
+									class="text-blue-500"
+									>这篇帖子</a
+								>，你也可以在帖子中找到更多由论坛坛友提供的高清卡面。
+							</p>
+							<br />
+							<h2 class="text-xl">
+								如果你拥有配备 Touch ID 或 Face ID 的 iPhone 或
+								iPad
+							</h2>
+							<p class="text-sm">
+								尝试获取 root 权限（比如越狱），进入
+								<code>/var/mobile/Library/Passes/Cards</code>
+								目录找到卡面。<br />请注意，其中
+								<code>pass.json</code>
+								存放着关于其卡片的所有隐私信息，包括
+								CVV；请务必在处理该文件副本时小心谨慎，不要发送给除你之外的任何人。
+							</p>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</header>
@@ -258,7 +323,12 @@ onMounted(async () => {
 																	>透过 Github
 																	打开原文件</span
 																>
-																<span>来自 {{ card.source }}</span>
+																<span
+																	>来自
+																	{{
+																		card.source
+																	}}</span
+																>
 																<span></span>
 															</div>
 														</div>
