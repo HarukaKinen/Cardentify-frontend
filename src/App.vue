@@ -295,7 +295,7 @@ onMounted(async () => {
 											:key="index"
 										>
 											<div
-												class="block rounded-lg bg-gradient-to-r from-gray-500 to-gray-600"
+												class="block rounded-2xl bg-gradient-to-r from-gray-500 to-gray-600"
 											>
 												<div
 													class="relative overflow-hidden rounded-lg bg-cover bg-no-repeat"
@@ -303,7 +303,7 @@ onMounted(async () => {
 													data-te-ripple-color="light"
 												>
 													<img
-														class="rounded-t-lg"
+														class="rounded-2xl"
 														:src="`${card.image}`"
 														alt=""
 													/>
