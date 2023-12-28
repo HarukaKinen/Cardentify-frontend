@@ -312,7 +312,7 @@ onMounted(async () => {
 														target="_blank"
 													>
 														<div
-															class="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full items-center justify-center overflow-hidden bg-[hsla(0,0%,0%,0.6)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"
+															class="absolute rounded-2xl bottom-0 left-0 right-0 top-0 flex h-full w-full items-center justify-center overflow-hidden bg-[hsla(0,0%,0%,0.6)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100"
 														>
 															<div
 																class="h-full flex flex-col justify-between items-center"
