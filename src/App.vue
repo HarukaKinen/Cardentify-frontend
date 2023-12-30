@@ -1,6 +1,6 @@
 <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
 <script setup>
-import { ref, onMounted, nextTick, watchEffect } from "vue";
+import { ref, onMounted, nextTick, watchEffect, withDirectives } from "vue";
 import {
 	Tab,
 	Sticky,
@@ -154,11 +154,28 @@ onMounted(async () => {
 						<br />
 						<p class="text-xl">本站仅收录来自以下服务提供的卡面</p>
 						<p class="text-sm">（优先度从高到低排序）</p>
-						<p class="text-m">
-							Tier 0 - Apple Pay <br />
-							Tier 1 - Paypal，Google Pay <br />
-							Tier 2 - Samsung Pay，Mi Pay，HUAWEI Pay <br />
-							Tier 3 - 云闪付 <br />
+						<p class="text-m flex items-center space-x-1">
+							<img
+								src="./assets/Apple Pay.png"
+								class="h-10"
+							/><span>Apple Pay,</span>
+							<img
+								src="./assets/Google Pay.png"
+								class="h-10"
+							/><span>Google Pay,</span>
+							<img src="./assets/PayPal.png" class="h-10" /><span
+								>PayPal,</span
+							>
+							<img
+								src="./assets/Samsung Pay.png"
+								class="h-10"
+							/><span>Samsung Pay,</span>
+							<img src="./assets/Mi Pay.png" class="h-10" /><span
+								>Mi Pay,</span
+							>
+							<img src="./assets/云闪付.png" class="h-10" /><span
+								>云闪付</span
+							>
 						</p>
 						<br />
 						<h1 class="text-l">另请参见</h1>
@@ -323,12 +340,20 @@ onMounted(async () => {
 																	>透过 Github
 																	打开原文件</span
 																>
-																<span
-																	>来自
-																	{{
-																		card.source
-																	}}</span
+																<div
+																	class="flex items-center space-x-1"
 																>
+																	<span
+																		>来自</span
+																	>
+																	<img
+																		:src="`./src/assets/${card.source}.png`"
+																		alt=""
+																		class="h-10"
+																	/><span>{{
+																		card.source
+																	}}</span>
+																</div>
 																<span></span>
 															</div>
 														</div>
@@ -336,13 +361,46 @@ onMounted(async () => {
 												</div>
 												<div class="p-6">
 													<h5
-														class="mb-4 text-xl font-medium leading-tight text-gray-200"
+														class="text-xl font-medium leading-tight text-gray-200 mb-2"
 													>
 														{{ card.description }}
 													</h5>
 													<div
-														class="border-b border-gray-200"
+														class="flex items-center justify-end space-x-1"
+													>
+														<img
+															:src="`./src/assets/${card.card.brand}.png`"
+															class="h-10"
+														/>
+														<span>{{
+															card.card.level
+														}}</span>
+														<span
+															v-if="
+																card.card
+																	.category
+															"
+															>Business</span
+														>
+														<span>{{
+															card.card.type
+														}}</span>
+													</div>
+													<div
+														class="border-b border-gray-200 my-2"
 													></div>
+													<!-- <div class="text-left">
+														参考 Bin:
+														<span
+															v-for="(
+																bin, index
+															) in card.bin"
+															:key="index"
+														> {{ bin }}</span>
+													</div>
+													<div
+														class="border-b border-gray-200 my-2"
+													></div> -->
 													<a
 														:href="`${card.issuer.url}`"
 														target="_blank"
@@ -350,7 +408,7 @@ onMounted(async () => {
 														title="进入发卡行官网"
 													>
 														<div
-															class="border border-gray-400 rounded-lg relative p-2 my-4"
+															class="border border-gray-400 rounded-lg relative p-2 mt-4"
 														>
 															<span
 																class="block text-xs w-full text-right"
@@ -400,7 +458,7 @@ onMounted(async () => {
 														title="进入结算行官网"
 													>
 														<div
-															class="border border-gray-400 rounded-lg relative p-2 my-4"
+															class="border border-gray-400 rounded-lg relative p-2 mt-4"
 														>
 															<span
 																class="block text-xs w-full text-right"
@@ -446,66 +504,6 @@ onMounted(async () => {
 															</p>
 														</div></a
 													>
-													<div class="mt-4">
-														<span
-															v-if="card.bin"
-															class="px-1"
-														>
-															<span
-																v-for="(
-																	bin, index
-																) in card.bin"
-																:key="index"
-																class="inline-block whitespace-nowrap rounded-full bg-primary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700"
-															>
-																{{ bin }}
-															</span>
-														</span>
-														<span
-															v-if="
-																card.card.type
-															"
-															class="px-1"
-														>
-															<span
-																class="inline-block whitespace-nowrap rounded-full bg-secondary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-secondary-800"
-															>
-																{{
-																	card.card
-																		.type
-																}}
-															</span>
-														</span>
-														<span
-															v-if="
-																card.card.level
-															"
-															class="px-1"
-														>
-															<span
-																class="inline-block whitespace-nowrap rounded-full bg-success-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-success-700"
-															>
-																{{
-																	card.card
-																		.level
-																}}
-															</span></span
-														>
-														<span
-															v-if="
-																card.card.brand
-															"
-															class="px-1"
-															><span
-																class="inline-block whitespace-nowrap rounded-full bg-danger-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-danger-700"
-															>
-																{{
-																	card.card
-																		.brand
-																}}
-															</span></span
-														>
-													</div>
 												</div>
 											</div>
 										</div>
