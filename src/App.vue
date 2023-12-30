@@ -303,7 +303,7 @@ onMounted(async () => {
 													data-te-ripple-color="light"
 												>
 													<img
-														class="rounded-2xl aspect-[85.6/53.98] object-cover"
+														class="rounded-2xl aspect-[85.6/53.98]"
 														:src="`${card.image}`"
 														alt=""
 													/>
