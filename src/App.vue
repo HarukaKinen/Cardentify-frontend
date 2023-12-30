@@ -156,24 +156,24 @@ onMounted(async () => {
 						<p class="text-sm">（优先度从高到低排序）</p>
 						<p class="text-m flex items-center space-x-1">
 							<img
-								src="./assets/Apple Pay.png"
+								src="/src/assets/Apple Pay.png"
 								class="h-10"
 							/><span>Apple Pay,</span>
 							<img
-								src="./assets/Google Pay.png"
+								src="/src/assets/Google Pay.png"
 								class="h-10"
 							/><span>Google Pay,</span>
-							<img src="./assets/PayPal.png" class="h-10" /><span
+							<img src="/src/assets/PayPal.png" class="h-10" /><span
 								>PayPal,</span
 							>
 							<img
-								src="./assets/Samsung Pay.png"
+								src="/src/assets/Samsung Pay.png"
 								class="h-10"
 							/><span>Samsung Pay,</span>
-							<img src="./assets/Mi Pay.png" class="h-10" /><span
+							<img src="/src/assets/Mi Pay.png" class="h-10" /><span
 								>Mi Pay,</span
 							>
-							<img src="./assets/云闪付.png" class="h-10" /><span
+							<img src="/src/assets/云闪付.png" class="h-10" /><span
 								>云闪付</span
 							>
 						</p>
@@ -347,7 +347,7 @@ onMounted(async () => {
 																		>来自</span
 																	>
 																	<img
-																		:src="`./src/assets/${card.source}.png`"
+																		:src="`/src/assets/${card.source}.png`"
 																		alt=""
 																		class="h-10"
 																	/><span>{{
@@ -369,7 +369,7 @@ onMounted(async () => {
 														class="flex items-center justify-end space-x-1"
 													>
 														<img
-															:src="`./src/assets/${card.card.brand}.png`"
+															:src="`/src/assets/${card.card.brand}.png`"
 															class="h-10"
 														/>
 														<span>{{
