@@ -120,14 +120,38 @@ onMounted(async () => {
 					</li>
 					<li role="presentation">
 						<a
-							href="#tabs-profile"
+							href="#tabs-apple"
 							class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
 							data-te-toggle="pill"
-							data-te-target="#tabs-profile"
+							data-te-target="#tabs-apple"
 							role="tab"
-							aria-controls="tabs-profile"
+							aria-controls="tabs-apple"
 							aria-selected="false"
 							>透过 Apple Pay 获取卡面</a
+						>
+					</li>
+					<li role="presentation">
+						<a
+							href="#tabs-google"
+							class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+							data-te-toggle="pill"
+							data-te-target="#tabs-google"
+							role="tab"
+							aria-controls="tabs-google"
+							aria-selected="false"
+							>透过 Google Pay 获取卡面</a
+						>
+					</li>
+					<li role="presentation">
+						<a
+							href="#tabs-unionpay"
+							class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+							data-te-toggle="pill"
+							data-te-target="#tabs-unionpay"
+							role="tab"
+							aria-controls="tabs-unionpay"
+							aria-selected="false"
+							>透过云闪付获取卡面</a
 						>
 					</li>
 				</ul>
@@ -164,8 +188,10 @@ onMounted(async () => {
 								class="h-10"
 							/><span>Google Pay,</span>
 							<img src="/PayPal.png" class="h-10" /><span
-								>PayPal,</span
+								>PayPal</span
 							>
+						</p>
+						<p class="text-m flex items-center space-x-1">
 							<img
 								src="/Samsung Pay.png"
 								class="h-10"
@@ -193,9 +219,9 @@ onMounted(async () => {
 					</div>
 					<div
 						class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
-						id="tabs-profile"
+						id="tabs-apple"
 						role="tabpanel"
-						aria-labelledby="tabs-profile-tab"
+						aria-labelledby="tabs-apple-tab"
 					>
 						<div>
 							<h2 class="text-xl">
@@ -221,6 +247,40 @@ onMounted(async () => {
 								<code>pass.json</code>
 								存放着关于其卡片的所有隐私信息，包括
 								CVV；请务必在处理该文件副本时小心谨慎，不要发送给除你之外的任何人。
+							</p>
+						</div>
+					</div>
+					<div
+						class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+						id="tabs-google"
+						role="tabpanel"
+						aria-labelledby="tabs-google-tab"
+					>
+						<div>
+							<h2 class="text-xl">
+								如果你拥有支持 Google Pay 非接功能的 Android 设备
+							</h2>
+							<p class="text-sm">
+								获取 root 权限，进入
+								<code>/data/data/com.google.android.apps.walletnfcrel/cache/image_manager_disk_cache</code>
+								目录找到卡面。<br />请注意，该目录不会保存没有验证的卡面文件，你需要先在 Google Pay 中完成卡的验证。
+							</p>
+						</div>
+					</div>
+					<div
+						class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+						id="tabs-unionpay"
+						role="tabpanel"
+						aria-labelledby="tabs-unionpay-tab"
+					>
+						<div>
+							<h2 class="text-xl">
+								如果你拥有已越狱的 iOS 设备
+							</h2>
+							<p class="text-sm">
+								确保已拥有 root 权限，对云闪付 APP 隐藏越狱状态，否则云闪付会拒绝启动（越狱环境下的支付软件非常危险，你需要自行承担风险）<br />
+								随后打开持卡列表，等待云闪付 APP 加载卡面。在更多卡面列表中的卡面文件不会被缓存，你需要选择并保存它们以缓存文件。<br />
+								进入 <code>/private/var/mobile/Containers/Data/Application/[云闪付 APP 的 UUID]/Library/Caches/com.hackemist.SDImageCache/default</code> 目录找到卡面。
 							</p>
 						</div>
 					</div>
