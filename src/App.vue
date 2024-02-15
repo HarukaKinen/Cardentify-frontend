@@ -366,7 +366,7 @@ onMounted(async () => {
 									<template v-for="(card, index) in cards">
 										<div
 											v-if="
-												card.issuer.country ==
+												card.card.country ==
 												country.country
 											"
 											:key="index"

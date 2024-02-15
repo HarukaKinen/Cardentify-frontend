@@ -18,16 +18,16 @@ export async function countCountry(banks, cards) {
 	let countMap = new Map();
 
 	// 初始化国家计数
-	banks.forEach((bank) => {
-		if (!countMap.has(bank.country)) {
-			countMap.set(bank.country, { country: bank.country, count: 0 });
+	cards.forEach((card) => {
+		if (!countMap.has(card.card.country)) {
+			countMap.set(card.card.country, { country: card.card.country, count: 0 });
 		}
 	});
 
 	// 计数cards
 	cards.forEach((card) => {
-		if (countMap.has(card.issuer.country)) {
-			countMap.get(card.issuer.country).count++;
+		if (countMap.has(card.card.country)) {
+			countMap.get(card.card.country).count++;
 		}
 	});
 
