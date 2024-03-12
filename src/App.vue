@@ -179,23 +179,20 @@ onMounted(async () => {
 						<p class="text-xl">本站仅收录来自以下服务提供的卡面</p>
 						<p class="text-sm">（优先度从高到低排序）</p>
 						<p class="text-m flex items-center space-x-1">
-							<img
-								src="/Apple Pay.png"
-								class="h-10"
-							/><span>Apple Pay,</span>
-							<img
-								src="/Google Pay.png"
-								class="h-10"
-							/><span>Google Pay,</span>
+							<img src="/Apple Pay.png" class="h-10" /><span
+								>Apple Pay,</span
+							>
+							<img src="/Google Pay.png" class="h-10" /><span
+								>Google Pay,</span
+							>
 							<img src="/PayPal.png" class="h-10" /><span
 								>PayPal</span
 							>
 						</p>
 						<p class="text-m flex items-center space-x-1">
-							<img
-								src="/Samsung Pay.png"
-								class="h-10"
-							/><span>Samsung Pay,</span>
+							<img src="/Samsung Pay.png" class="h-10" /><span
+								>Samsung Pay,</span
+							>
 							<img src="/Mi Pay.png" class="h-10" /><span
 								>Mi Pay,</span
 							>
@@ -258,12 +255,16 @@ onMounted(async () => {
 					>
 						<div>
 							<h2 class="text-xl">
-								如果你拥有支持 Google Pay 非接功能的 Android 设备
+								如果你拥有支持 Google Pay 非接功能的 Android
+								设备
 							</h2>
 							<p class="text-sm">
 								获取 root 权限，进入
-								<code>/data/data/com.google.android.apps.walletnfcrel/cache/image_manager_disk_cache</code>
-								目录找到卡面。<br />请注意，该目录不会保存没有验证的卡面文件，你需要先在 Google Pay 中完成卡的验证。
+								<code
+									>/data/data/com.google.android.apps.walletnfcrel/cache/image_manager_disk_cache</code
+								>
+								目录找到卡面。<br />请注意，该目录不会保存没有验证的卡面文件，你需要先在
+								Google Pay 中完成卡的验证。
 							</p>
 						</div>
 					</div>
@@ -274,13 +275,19 @@ onMounted(async () => {
 						aria-labelledby="tabs-unionpay-tab"
 					>
 						<div>
-							<h2 class="text-xl">
-								如果你拥有已越狱的 iOS 设备
-							</h2>
+							<h2 class="text-xl">如果你拥有已越狱的 iOS 设备</h2>
 							<p class="text-sm">
-								确保已拥有 root 权限，对云闪付 APP 隐藏越狱状态，否则云闪付会拒绝启动（越狱环境下的支付软件非常危险，你需要自行承担风险）<br />
-								随后打开持卡列表，等待云闪付 APP 加载卡面。在更多卡面列表中的卡面文件不会被缓存，你需要选择并保存它们以缓存文件。<br />
-								进入 <code>/private/var/mobile/Containers/Data/Application/[云闪付 APP 的 UUID]/Library/Caches/com.hackemist.SDImageCache/default</code> 目录找到卡面。
+								确保已拥有 root 权限，对云闪付 APP
+								隐藏越狱状态，否则云闪付会拒绝启动（越狱环境下的支付软件非常危险，你需要自行承担风险）<br />
+								随后打开持卡列表，等待云闪付 APP
+								加载卡面。在更多卡面列表中的卡面文件不会被缓存，你需要选择并保存它们以缓存文件。<br />
+								进入
+								<code
+									>/private/var/mobile/Containers/Data/Application/[云闪付
+									APP 的
+									UUID]/Library/Caches/com.hackemist.SDImageCache/default</code
+								>
+								目录找到卡面。
 							</p>
 						</div>
 					</div>
@@ -449,18 +456,6 @@ onMounted(async () => {
 													<div
 														class="border-b border-gray-200 my-2"
 													></div>
-													<!-- <div class="text-left">
-														参考 Bin:
-														<span
-															v-for="(
-																bin, index
-															) in card.bin"
-															:key="index"
-														> {{ bin }}</span>
-													</div>
-													<div
-														class="border-b border-gray-200 my-2"
-													></div> -->
 													<a
 														:href="`${card.issuer.url}`"
 														target="_blank"
@@ -564,6 +559,25 @@ onMounted(async () => {
 															</p>
 														</div></a
 													>
+													<div
+														v-if="card.bin"
+														class="mt-4"
+													>
+														<div
+															class="border-b border-gray-200 my-2"
+														></div>
+														<span class="px-1">
+															<span
+																v-for="(
+																	bin, index
+																) in card.bin"
+																:key="index"
+																class="inline-block whitespace-nowrap rounded-full bg-primary-100 px-[0.65em] pb-[0.25em] pt-[0.35em] text-center align-baseline text-[0.75em] font-bold leading-none text-primary-700"
+															>
+																{{ bin }}
+															</span>
+														</span>
+													</div>
 												</div>
 											</div>
 										</div>
