@@ -566,7 +566,7 @@ onMounted(async () => {
 														<div
 															class="border-b border-gray-200 my-2"
 														></div>
-														<span class="px-1">
+														<span class="px-1 space-x-1">
 															<span
 																v-for="(
 																	bin, index
