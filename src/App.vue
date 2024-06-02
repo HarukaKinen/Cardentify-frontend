@@ -176,7 +176,7 @@ onMounted(async () => {
 							仓库的入口。
 						</p>
 						<br />
-						<p class="text-xl">本站仅收录来自以下服务提供的卡面</p>
+						<p class="text-xl">本站仅收录来自以下服务「按原样」提供的卡面</p>
 						<p class="text-sm">（优先度从高到低排序）</p>
 						<p class="text-m flex items-center space-x-1">
 							<img src="/Apple Pay.png" class="h-10" /><span
