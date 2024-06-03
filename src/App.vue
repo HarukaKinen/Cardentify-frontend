@@ -439,9 +439,6 @@ onMounted(async () => {
 															:src="`/${card.card.brand}.png`"
 															class="h-10"
 														/>
-														<span>{{
-															card.card.level
-														}}</span>
 														<span
 															v-if="
 																card.card
@@ -449,6 +446,9 @@ onMounted(async () => {
 															"
 															>Business</span
 														>
+														<span>{{
+															card.card.level
+														}}</span>
 														<span>{{
 															card.card.type
 														}}</span>
