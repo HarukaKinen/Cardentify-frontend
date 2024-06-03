@@ -20,7 +20,10 @@ export async function countCountry(banks, cards) {
 	// 初始化国家计数
 	cards.forEach((card) => {
 		if (!countMap.has(card.card.country)) {
-			countMap.set(card.card.country, { country: card.card.country, count: 0 });
+			countMap.set(card.card.country, {
+				country: card.card.country,
+				count: 0,
+			});
 		}
 	});
 
