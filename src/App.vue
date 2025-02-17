@@ -602,7 +602,7 @@ onMounted(async () => {
 	>
 		<div class="grid grid-cols-2">
 			<div class="mx-2 my-1 text-left lg:mb-0 lg:mt-0 px-3">
-				<span> © 2021 - 2023 Haruka Hong Kong </span>
+				<span> 2021 - 2025 Haruka Technology Limited</span>
 			</div>
 		</div>
 	</footer>
