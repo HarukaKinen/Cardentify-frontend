@@ -142,7 +142,7 @@ onMounted(async () => {
 							>透过 Google Pay 获取卡面</a
 						>
 					</li>
-										<li role="presentation">
+					<li role="presentation">
 						<a
 							href="#tabs-mi"
 							class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
@@ -276,11 +276,12 @@ onMounted(async () => {
 								<code
 									>/data/data/com.miui.tsmclient/cache/image_manager_disk_cache/</code
 								>
-								目录找到卡面。<br />其中卡面图片文件格式为 <code>.0</code>，但可以直接使用图片格式打开。
+								目录找到卡面。<br />其中卡面图片文件格式为
+								<code>.0</code>，但可以直接使用图片格式打开。
 							</p>
 						</div>
 					</div>
-										<div
+					<div
 						class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
 						id="tabs-google"
 						role="tabpanel"
