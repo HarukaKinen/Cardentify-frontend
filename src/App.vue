@@ -142,6 +142,18 @@ onMounted(async () => {
 							>透过 Google Pay 获取卡面</a
 						>
 					</li>
+										<li role="presentation">
+						<a
+							href="#tabs-mi"
+							class="my-2 block border-x-0 border-b-2 border-t-0 border-transparent px-7 pb-3.5 pt-4 text-xs font-medium uppercase leading-tight text-neutral-500 hover:isolate hover:border-transparent hover:bg-neutral-100 focus:isolate focus:border-transparent data-[te-nav-active]:border-primary data-[te-nav-active]:text-primary dark:text-neutral-400 dark:hover:bg-transparent dark:data-[te-nav-active]:border-primary-400 dark:data-[te-nav-active]:text-primary-400"
+							data-te-toggle="pill"
+							data-te-target="#tabs-mi"
+							role="tab"
+							aria-controls="tabs-mi"
+							aria-selected="false"
+							>透过 Mi Pay 获取卡面</a
+						>
+					</li>
 					<li role="presentation">
 						<a
 							href="#tabs-unionpay"
@@ -241,7 +253,7 @@ onMounted(async () => {
 							</h2>
 							<p class="text-sm">
 								尝试获取 root 权限（比如越狱），进入
-								<code>/var/mobile/Library/Passes/Cards</code>
+								<code>/var/mobile/Library/Passes/Cards/</code>
 								目录找到卡面。<br />请注意，其中
 								<code>pass.json</code>
 								存放着关于其卡片的所有隐私信息，包括
@@ -250,6 +262,25 @@ onMounted(async () => {
 						</div>
 					</div>
 					<div
+						class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
+						id="tabs-mi"
+						role="tabpanel"
+						aria-labelledby="tabs-mi-tab"
+					>
+						<div>
+							<h2 class="text-xl">
+								如果你拥有支持 Mi Pay 非接功能的小米或红米设备
+							</h2>
+							<p class="text-sm">
+								获取 root 权限，进入
+								<code
+									>/data/data/com.miui.tsmclient/cache/image_manager_disk_cache/</code
+								>
+								目录找到卡面。<br />其中卡面图片文件格式为 <code>.0</code>，但可以直接使用图片格式打开。
+							</p>
+						</div>
+					</div>
+										<div
 						class="hidden opacity-0 transition-opacity duration-150 ease-linear data-[te-tab-active]:block"
 						id="tabs-google"
 						role="tabpanel"
@@ -263,7 +294,7 @@ onMounted(async () => {
 							<p class="text-sm">
 								获取 root 权限，进入
 								<code
-									>/data/data/com.google.android.apps.walletnfcrel/cache/image_manager_disk_cache</code
+									>/data/data/com.google.android.apps.walletnfcrel/cache/image_manager_disk_cache/</code
 								>
 								目录找到卡面。<br />请注意，该目录不会保存没有验证的卡面文件，你需要先在
 								Google Pay 中完成卡的验证。
@@ -287,7 +318,7 @@ onMounted(async () => {
 								<code
 									>/private/var/mobile/Containers/Data/Application/[云闪付
 									APP 的
-									UUID]/Library/Caches/com.hackemist.SDImageCache/default</code
+									UUID]/Library/Caches/com.hackemist.SDImageCache/default/</code
 								>
 								目录找到卡面。
 							</p>
