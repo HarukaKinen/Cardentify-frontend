@@ -323,6 +323,19 @@ onMounted(async () => {
 								>
 								目录找到卡面。
 							</p>
+							<br />
+							<h2 class="text-xl">透过中国银联网站</h2>
+							<p class="text-sm">
+								前往
+								<a
+									href="https://mobilepay.95516.com/home/index"
+									target="_blank"
+									class="text-blue-500"
+									>中国银联</a
+								>
+								[95516.com]
+								网站，使用你的云闪付账号登录，进入卡管理即可查看云闪付已绑定的卡片。你可以通过浏览器审查元素直接触碰源文件。
+							</p>
 						</div>
 					</div>
 				</div>
