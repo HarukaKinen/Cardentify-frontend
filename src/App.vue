@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from "vue";
 
-const destination = "https://cards.no.ac";
+const destination = "https://cards.no2.ac";
 const countdownFrom = 8;
 const secondsLeft = ref(countdownFrom);
 let timer;
@@ -66,7 +66,7 @@ onBeforeUnmount(() => window.clearInterval(timer));
 					<div class="redirect-copy">
 						<p class="redirect-label">正在为你跳转</p>
 						<a :href="destination" class="destination">
-							cards.no.ac
+							cards.no2.ac
 							<svg viewBox="0 0 24 24" aria-hidden="true">
 								<path d="M5 12h14M13 6l6 6-6 6" />
 							</svg>
@@ -88,7 +88,7 @@ onBeforeUnmount(() => window.clearInterval(timer));
 
 			<p class="fallback">
 				没有自动跳转？请点击上方按钮，或访问
-				<a :href="destination">https://cards.no.ac</a>
+				<a :href="destination">https://cards.no2.ac</a>
 			</p>
 		</section>
 
